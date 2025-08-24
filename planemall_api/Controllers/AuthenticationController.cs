@@ -15,7 +15,6 @@ using System.Security.Cryptography;
 namespace planemall_api.Controllers
 {
     [Route("api/auth")]
-    [EnableCors("FlutterPolicy")]
     [ApiController]
     public class AuthenticationController : ControllerBase
     {

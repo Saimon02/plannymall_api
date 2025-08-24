@@ -48,12 +48,12 @@ builder.Host.UseSerilog(configureLogger: (context, configuration) =>
 
 #region Cors Policy
 
-builder.Services.AddCors(o => o.AddPolicy("FlutterPolicy", builder =>
-{
-    builder.AllowAnyOrigin()
-           .AllowAnyMethod()
-           .AllowAnyHeader();
-}));
+//builder.Services.AddCors(o => o.AddPolicy("FlutterPolicy", builder =>
+//{
+//    builder.AllowAnyOrigin()
+//           .AllowAnyMethod()
+//           .AllowAnyHeader();
+//}));
 
 #endregion
 
