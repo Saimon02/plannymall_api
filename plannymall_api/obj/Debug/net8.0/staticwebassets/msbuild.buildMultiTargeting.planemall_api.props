@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/plannymall_api.props" />
+</Project>
