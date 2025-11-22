@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "TeWm1WN9TYimBLH6oVF4V7izbGseRmy9VYxmgHXURSA=",
+  "Hash": "YoeHlCixmK+bUDwmK7MDxZubPJdysDPtxJ4NLKEYUK0=",
   "Source": "plannymall_api",
   "BasePath": "_content/plannymall_api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }
