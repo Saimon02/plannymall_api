@@ -1,20 +1,39 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.Collections.Generic;
 
-namespace plannymall_api.Models
+namespace plannymall_api.Models;
+
+public partial class User
 {
-    [Table("Users")]
-    public class User
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public string Username { get; set; }
+    public string Uuid { get; set; } = null!;
 
-        public string Email { get; set; }
+    public string Email { get; set; } = null!;
 
-        public byte[] Password_Hash { get; set; }
+    public string FirstName { get; set; } = null!;
 
-        public byte[] Password_Salt { get; set; }
+    public string LastName { get; set; } = null!;
 
-        public DateTime? CreatedAt { get; set; }
-    }
+    public int PhoneNumberId { get; set; }
+
+    public byte[] PasswordHash { get; set; } = null!;
+
+    public byte[] PasswordSale { get; set; } = null!;
+
+    public DateTime CreatedAt { get; set; }
+
+    public DateTime UpdatedAt { get; set; }
+
+    public DateTime? DeletedAt { get; set; }
+
+    public bool IsDeleted { get; set; }
+
+    public bool PasswordReset { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public bool IsBlocked { get; set; }
+
+    public bool IsReported { get; set; }
 }

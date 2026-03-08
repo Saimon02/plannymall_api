@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
 using plannymall_api.Configurations.Jwt;
 using plannymall_api.Data.PostgreSql.PasswordResetTokenData.Interface;
 using plannymall_api.Data.PostgreSql.RefreshTokenData.Interface;
@@ -41,7 +40,7 @@ namespace plannymall_api.Controllers
         #region Post Method
 
         [HttpPost("register")]
-        public async Task<ActionResult<AuthenticationResultDto>> Register(UserDto request)
+        public async Task<ActionResult<AuthenticationResultDto>> Register(SignUpUserDto request)
         {
             var result = new AuthenticationResultDto()
             {
@@ -58,9 +57,9 @@ namespace plannymall_api.Controllers
                 User user = new User()
                 {
                     Email = request.email,
-                    Username = request.username,
-                    Password_Hash = passwordHash,
-                    Password_Salt = passwordSalt,
+                    //Username = request.username,
+                    PasswordHash = passwordHash,
+                    PasswordSale = passwordSalt,
                 };
 
                 if (!await _user_repo.InsertUserAsync(user))
@@ -78,7 +77,7 @@ namespace plannymall_api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<AuthenticationResultDto>> Login([FromBody] UserDto request)
+        public async Task<ActionResult<AuthenticationResultDto>> Login([FromBody] SignUpUserDto request)
         {
             var result = new AuthenticationResultDto()
             {
@@ -96,12 +95,12 @@ namespace plannymall_api.Controllers
 
                 if(user == null)
                 {
-                    user = await _user_repo.GetUserByUsernameAsync(request.username);
+                    //user = await _user_repo.GetUserByUsernameAsync(request.username);
                 }
 
                 if (user != null)
                 {
-                    if (!this.VerifyPasswordHash(request.password, user.Password_Hash, user.Password_Salt))
+                    if (!this.VerifyPasswordHash(request.password, user.PasswordHash, user.PasswordSale))
                     {
                         result.Errors.Add("La password non e corretta");
                         return BadRequest(result);

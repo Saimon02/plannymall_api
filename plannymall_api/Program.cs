@@ -2,15 +2,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using plannymall_api.Configurations.Jwt;
-using plannymall_api.Data.PostgreSql.RefreshTokenData.Interface;
-using plannymall_api.Data.PostgreSql.RefreshTokenData.Repository;
-using plannymall_api.Interfaces.Models;
 using plannymall_api.Models.PostgreSql;
-using plannymall_api.Postgresql;
 using System.Text;
 using Serilog;
-using plannymall_api.Data.PostgreSql.PasswordResetTokenData.Interface;
-using plannymall_api.Data.PostgreSql.PasswordResetTokenData.Repository;
+using plannymall_api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,9 +20,7 @@ builder.Services.AddSwaggerGen();
 
 #region Scopes
 
-builder.Services.AddScoped<IPostgresUser, PostgresUserRepo>();
-builder.Services.AddScoped<IRefreshToken, PostgresRefreshTokenRepo>();
-builder.Services.AddScoped<IPasswordResetTokenData, PostgresPasswordResetTokenDataRepo>();
+ServiceCollectionExtensions.AddRepositories(builder.Services);
 
 #endregion
 

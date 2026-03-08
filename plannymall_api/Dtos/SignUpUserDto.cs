@@ -1,6 +1,6 @@
 ﻿namespace plannymall_api.Dtos
 {
-    public class UserDto
+    public class SignUpUserDto
     {
         public string username { get; set; }
 

@@ -43,19 +43,6 @@ namespace plannymall_api.Postgresql
             }
         }
 
-        public async Task<User?> GetUserByUsernameAsync(string username)
-        {
-            try
-            {
-                return await _context.Users.FirstOrDefaultAsync(x => x.Username.ToLower() == username.ToLower());
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Error in GetUserByUsernameAsync(), the username is {username}; error details: {ex.Message}");
-                return null;
-            }
-        }
-
         public async Task<bool> InsertUserAsync(User cmd)
         {
             try
