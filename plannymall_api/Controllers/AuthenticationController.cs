@@ -36,11 +36,10 @@ namespace plannymall_api.Controllers
             _passwordResetTokenData_repo = passwordResetTokenData_repo;
         }
 
-
         #region Post Method
 
         [HttpPost("register")]
-        public async Task<ActionResult<AuthenticationResultDto>> Register(SignUpUserDto request)
+        public async Task<ActionResult<AuthenticationResultDto>> Register(RegisterDto request)
         {
             var result = new AuthenticationResultDto()
             {
@@ -57,7 +56,9 @@ namespace plannymall_api.Controllers
                 User user = new User()
                 {
                     Email = request.email,
-                    //Username = request.username,
+                    FirstName = request.firstName,
+                    LastName = request.lastName,
+                    
                     PasswordHash = passwordHash,
                     PasswordSale = passwordSalt,
                 };
@@ -77,7 +78,7 @@ namespace plannymall_api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<AuthenticationResultDto>> Login([FromBody] SignUpUserDto request)
+        public async Task<ActionResult<AuthenticationResultDto>> Login([FromBody] RegisterDto request)
         {
             var result = new AuthenticationResultDto()
             {
